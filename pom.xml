@@ -22,7 +22,6 @@
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
 		<sonar.host.url>http://20.51.220.17:9000/</sonar.host.url>
-		<sonar.password>Ashokgani@6629</sonar.password> 
 		<sonar.token>sqa_124d772e19aa1334e52c38bc96b556b1d813f44c</sonar.token>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -118,6 +117,11 @@
                             <artifactId>maven-war-plugin</artifactId>
                             <version>3.3.2</version>
                         </plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>4.0.0.4121</version
+				</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
