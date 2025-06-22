@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  annotations:
+    imageregistry: "https://hub.docker.com/"
+  namespace: default
+  labels:
+     Env: Dev
+     App: JavaWebApp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      App: JavaWebApp
+    matchExpressions:
+     - {key: Env, operator: In, values: [Dev]}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 20%
+  minReadySeconds: 60
+  template:
+    metadata:
+      labels:
+        App: JavaWebApp
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.16.0
+        imagePullPolicy: IfNotPresent
+        command: ["nginx","-g","daemon-off"]
+        ports:
+        - containerPort: 80
+          name: webport
+         
