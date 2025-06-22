@@ -13,8 +13,10 @@ spec:
   selector:
     matchLabels:
       App: JavaWebApp
+      Env: Dev
     matchExpressions:
      - {key: Env, operator: In, values: [Dev]}
+     - {key: App, operator: In, values: [JavaWebApp]}
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -24,7 +26,7 @@ spec:
   template:
     metadata:
       labels:
-        App: JavaWebApp
+        Env: Dev
     spec:
       containers:
       - name: nginx
